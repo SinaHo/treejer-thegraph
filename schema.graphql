@@ -1,0 +1,71 @@
+type Actor @entity {
+  id: ID!
+  isOwner: Boolean!
+  isPlanter: Boolean!
+  isAmbassador: Boolean!
+  totalFund: BigInt     # total fund provided for this actor
+  credit: BigInt        # the fund which actor can withdraw
+  totalWithdraw: BigInt # total withdrawed funds
+  totalSeeds: BigInt 
+  ownedTrees: [Tree!]
+  plantedTrees: [Tree!]
+}
+
+type TreeType @entity {
+  id: ID!
+  name: String!
+  scientificName: String!
+  O2Formula: BigInt!
+  price: BigInt!
+}
+
+type Tree @entity {
+  id: ID!
+  latitude: String!
+  longitude: String!
+  plantedDate: BigInt!
+  birthDate: BigInt
+  height: BigInt!
+  diameter: BigInt!
+  treeType: TreeType #FIXME: tree type must be mandatory, but for know it is optional since there are some trees recorded in etherum without tree type
+  greenBlock: GB
+  
+  ambassador: Actor
+  planter: Actor
+  owner: Actor
+
+  lastFundedDate: BigInt
+  currentFund: BigInt
+  totalFund: BigInt
+  ambassadorRemainingBalance: BigInt
+  planterRemainingBalance: BigInt
+}
+
+type GB @entity {
+  id: ID!
+  title: String!
+  coordinates: String
+  status: Boolean
+  ambassador: Actor
+}
+
+type Fund @entity {
+  id: ID!
+  amount: BigInt!
+}
+
+#type TreeFunded @entity {
+#  id: ID!
+#  tree: Tree
+#  planterBalance: BigInt!
+#  ambassadorBalance: BigInt!
+#  totalFund: BigInt
+#  owner: String! # address or Bytes?
+#}
+
+# TreeFactory.plantTree => function plant( => emit TreePlanted
+# PlantCall
+
+# TreeFactory.getTree = async (treeId) => {
+#    return await TreeFactory.contract.methods.trees(treeId).call();
+# }

@@ -1,0 +1,229 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: TreeFactory
+    network: ropsten
+    source:
+      address: "0x5417ab55cF8649e7E97b844770EE24decE110B04"
+      abi: TreeFactory
+      startBlock: 9565995
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - AmbassadorBalanceWithdrawn
+        - LocalDevelopmentFundWithdrawn
+        - PlanterBalanceWithdrawn
+        - PriceChanged
+        - RescueFundWithdrawn
+        - ResearchFundWithdrawn
+        - TreeFunded
+        - TreePlanted
+        - TreejerFundWithdrawn
+      abis:
+        - name: AccessControlUpgradeable
+          file: ./abis/AccessControlUpgradeable.json
+        - name: AccessRestriction
+          file: ./abis/AccessRestriction.json
+        - name: Address
+          file: ./abis/Address.json
+        - name: AddressUpgradeable
+          file: ./abis/AddressUpgradeable.json
+        - name: BasePaymaster
+          file: ./abis/BasePaymaster.json
+        - name: BaseRelayRecipient
+          file: ./abis/BaseRelayRecipient.json
+        - name: Context
+          file: ./abis/Context.json
+        - name: ContextUpgradeable
+          file: ./abis/ContextUpgradeable.json
+        - name: Dai
+          file: ./abis/Dai.json
+        - name: ECDSA
+          file: ./abis/ECDSA.json
+        - name: EnumerableMapUpgradeable
+          file: ./abis/EnumerableMapUpgradeable.json
+        - name: EnumerableSetUpgradeable
+          file: ./abis/EnumerableSetUpgradeable.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+        - name: ERC20Upgradeable
+          file: ./abis/ERC20Upgradeable.json
+        - name: ERC165Upgradeable
+          file: ./abis/ERC165Upgradeable.json
+        - name: ERC721HolderUpgradeable
+          file: ./abis/ERC721HolderUpgradeable.json
+        - name: ERC721Upgradeable
+          file: ./abis/ERC721Upgradeable.json
+        - name: ForestFactory
+          file: ./abis/ForestFactory.json
+        - name: Forwarder
+          file: ./abis/Forwarder.json
+        - name: GsnEip712Library
+          file: ./abis/GsnEip712Library.json
+        - name: GsnTypes
+          file: ./abis/GsnTypes.json
+        - name: GsnUtils
+          file: ./abis/GsnUtils.json
+        - name: IAccessRestriction
+          file: ./abis/IAccessRestriction.json
+        - name: IERC20
+          file: ./abis/IERC20.json
+        - name: IERC20Upgradeable
+          file: ./abis/IERC20Upgradeable.json
+        - name: IERC165Upgradeable
+          file: ./abis/IERC165Upgradeable.json
+        - name: IERC721EnumerableUpgradeable
+          file: ./abis/IERC721EnumerableUpgradeable.json
+        - name: IERC721MetadataUpgradeable
+          file: ./abis/IERC721MetadataUpgradeable.json
+        - name: IERC721ReceiverUpgradeable
+          file: ./abis/IERC721ReceiverUpgradeable.json
+        - name: IERC721Upgradeable
+          file: ./abis/IERC721Upgradeable.json
+        - name: IForwarder
+          file: ./abis/IForwarder.json
+        - name: Initializable
+          file: ./abis/Initializable.json
+        - name: IO2
+          file: ./abis/IO2.json
+        - name: IPaymaster
+          file: ./abis/IPaymaster.json
+        - name: IRelayHub
+          file: ./abis/IRelayHub.json
+        - name: IRelayRecipient
+          file: ./abis/IRelayRecipient.json
+        - name: IStakeManager
+          file: ./abis/IStakeManager.json
+        - name: ITree
+          file: ./abis/ITree.json
+        - name: ITreeFactory
+          file: ./abis/ITreeFactory.json
+        - name: ITreeType
+          file: ./abis/ITreeType.json
+        - name: IUpdateFactory
+          file: ./abis/IUpdateFactory.json
+        - name: Migrations
+          file: ./abis/Migrations.json
+        - name: MinLibBytes
+          file: ./abis/MinLibBytes.json
+        - name: O2
+          file: ./abis/O2.json
+        - name: O2Factory
+          file: ./abis/O2Factory.json
+        - name: Ownable
+          file: ./abis/Ownable.json
+        - name: PausableUpgradeable
+          file: ./abis/PausableUpgradeable.json
+        - name: PublicForest
+          file: ./abis/PublicForest.json
+        - name: RelayRecipient
+          file: ./abis/RelayRecipient.json
+        - name: SafeMath
+          file: ./abis/SafeMath.json
+        - name: SafeMathUpgradeable
+          file: ./abis/SafeMathUpgradeable.json
+        - name: StringsUpgradeable
+          file: ./abis/StringsUpgradeable.json
+        - name: Tree
+          file: ./abis/Tree.json
+        - name: TreeFactory
+          file: ./abis/TreeFactory.json
+        - name: UpdateFactory
+          file: ./abis/UpdateFactory.json
+        - name: WhitelistPaymaster
+          file: ./abis/WhitelistPaymaster.json
+      eventHandlers:
+        - event: AmbassadorBalanceWithdrawn(address,uint256)
+          handler: handleAmbassadorBalanceWithdrawn
+        - event: LocalDevelopmentFundWithdrawn(address,uint256,address)
+          handler: handleLocalDevelopmentFundWithdrawn
+        - event: PlanterBalanceWithdrawn(address,uint256)
+          handler: handlePlanterBalanceWithdrawn
+        - event: PriceChanged(uint256)
+          handler: handlePriceChanged
+        - event: RescueFundWithdrawn(address,uint256,address)
+          handler: handleRescueFundWithdrawn
+        - event: ResearchFundWithdrawn(address,uint256,address)
+          handler: handleResearchFundWithdrawn
+        - event: TreeFunded(uint256,uint256,uint256,uint256,address)
+          handler: handleTreeFunded
+        - event: TreePlanted(uint256,string,string,uint256)
+          handler: handleTreePlanted
+        - event: TreejerFundWithdrawn(address,uint256,address)
+          handler: handleTreejerFundWithdrawn
+      file: ./src/mappings/TreeFactory.ts
+
+  - kind: ethereum/contract
+    name: TreeType
+    network: ropsten
+    source:
+      address: "0xc0b5D0b98fe94448d34BacB1b89F76446bbB8EaA"
+      abi: TreeType
+      startBlock: 9565986
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - TreeType
+      abis:
+        - name: TreeType
+          file: ./abis/TreeType.json
+      eventHandlers:
+        - event: NewType(uint256,string,string,uint256,uint256)
+          handler: handleNewType
+      file: ./src/mappings/TreeType.ts
+
+  - kind: ethereum/contract
+    name: GBFactory
+    network: ropsten
+    source:
+      address: "0x35583A65967CB09F29AE9e557ac5c0C4A1AF1805"
+      abi: GBFactory
+      startBlock: 9565983
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - GBFactory
+      abis:
+        - name: GBFactory
+          file: ./abis/GBFactory.json
+        - name: IGBFactory
+          file: ./abis/IGBFactory.json
+      eventHandlers:
+        - event: NewGBAdded(uint256,string)
+          handler: handleNewGBAdded
+      file: ./src/mappings/GBFactory.ts
+
+  - kind: ethereum/contract
+    name: SeedFactory
+    network: ropsten
+    source:
+      address: "0xd8f33D42aAAB6dAF2Ecd1d64b61742Fd75E8b236"
+      abi: SeedFactory
+      startBlock: 9565971
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - SeedFactory
+      abis:
+        - name: ISeed
+          file: ./abis/ISeed.json
+        - name: Seed
+          file: ./abis/Seed.json
+        - name: SeedFactory
+          file: ./abis/SeedFactory.json
+      eventHandlers:
+        - event: SeedMinted(address,uint256)
+          handler: handleSeedMinted
+        - event: SeedGeneratedPerSecondChanged(uint256)
+          handler: handleSeedGeneratedPerSecondChanged
+      file: ./src/mappings/SeedFactory.ts
