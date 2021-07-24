@@ -1,6 +1,6 @@
 import {
   NewType as NewTypeEvent, 
-} from "../../generated/TreeFactory/TreeType"
+} from "../../generated/TreeType/TreeType"
 
 import { 
     TreeType as TreeTypeEntity
